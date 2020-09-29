@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{159E1A0D-8B07-4E3A-B7BC-1DB96BF802E5}|Default">
+  <MonoDevelop.Ide.ItemProperties.September2020 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="September2020/Helpers/Wait.cs">
+    <Files>
+      <File FileName="September2020/Pages/CompanyPage.cs" Line="151" Column="33" />
+      <File FileName="September2020/Test/CompanyTest.cs" />
+      <File FileName="September2020/Pages/TMPage.cs" />
+      <File FileName="September2020/Helpers/CommonDriver.cs" Line="1" Column="1" />
+      <File FileName="September2020/Helpers/Wait.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="September2020" expanded="True">
+            <Node name="September2020" expanded="True">
+              <Node name="Helpers" expanded="True">
+                <Node name="Wait.cs" selected="True" />
+              </Node>
+              <Node name="Pages" expanded="True" />
+              <Node name="Test" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="September2020" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
