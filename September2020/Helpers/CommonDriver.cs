@@ -17,7 +17,6 @@ namespace September2020.Helpers
         {
             //Initiate and define webdriver
             driver = new ChromeDriver();
-
             LoginPage loginObj = new LoginPage();
             loginObj.LoginSteps(driver);
         }
@@ -28,6 +27,7 @@ namespace September2020.Helpers
         {
             //close instance of open chrome driver
             driver.Quit();
+
         }
 
 

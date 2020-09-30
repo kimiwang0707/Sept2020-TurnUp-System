@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kimiwang/Desktop/Git/September2020_Test/September2020/September2020.csproj": {}
+    "E:\\GitHub\\Sept-2020-TurnUp-System\\September2020\\September2020.csproj": {}
   },
   "projects": {
-    "/Users/kimiwang/Desktop/Git/September2020_Test/September2020/September2020.csproj": {
+    "E:\\GitHub\\Sept-2020-TurnUp-System\\September2020\\September2020.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kimiwang/Desktop/Git/September2020_Test/September2020/September2020.csproj",
+        "projectUniqueName": "E:\\GitHub\\Sept-2020-TurnUp-System\\September2020\\September2020.csproj",
         "projectName": "September2020",
-        "projectPath": "/Users/kimiwang/Desktop/Git/September2020_Test/September2020/September2020.csproj",
-        "packagesPath": "/Users/kimiwang/.nuget/packages/",
-        "outputPath": "/Users/kimiwang/Desktop/Git/September2020_Test/September2020/obj/",
+        "projectPath": "E:\\GitHub\\Sept-2020-TurnUp-System\\September2020\\September2020.csproj",
+        "packagesPath": "C:\\Users\\HUAWEI\\.nuget\\packages\\",
+        "outputPath": "E:\\GitHub\\Sept-2020-TurnUp-System\\September2020\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/kimiwang/.config/NuGet/NuGet.Config"
+          "C:\\Users\\HUAWEI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +44,14 @@
             "DotNetSeleniumExtras.WaitHelpers": {
               "target": "Package",
               "version": "[3.11.0, )"
+            },
+            "IKVM": {
+              "target": "Package",
+              "version": "[8.1.5717, )"
+            },
+            "Microsoft.Azure.WebJobs.Core": {
+              "target": "Package",
+              "version": "[3.0.19, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
@@ -63,6 +76,14 @@
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
               "version": "[85.0.4183.8700, )"
+            },
+            "SpecFlow": {
+              "target": "Package",
+              "version": "[3.4.8, )"
+            },
+            "SpecFlow.NUnit": {
+              "target": "Package",
+              "version": "[3.4.8, )"
             }
           },
           "imports": [
@@ -80,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
