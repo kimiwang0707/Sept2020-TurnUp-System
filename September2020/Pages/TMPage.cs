@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using com.sun.org.apache.bcel.@internal.classfile;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using September2020.Helpers;
@@ -62,6 +63,72 @@ namespace September2020.Pages
 
 
 
+        internal void VarifyRecordCreated(IWebDriver driver, string code)
+        {
+            try
+            {
+                // Go to the last page
+                // Because the data grid load more slowly than page switch bar, so use the data grid as the benchmark.
+                Wait.WaitForElementVisibility(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]", 5);
+                driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[4]/a[4]")).Click();
+            }
+            catch (Exception e)
+            {
+                Assert.Fail("Fail to go to last page", e.Message);
+            }
+
+            // Validate if the result is as expected
+            Wait.WaitForElement(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]");
+            IWebElement expectedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            IWebElement expectedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
+
+            // Use assert to judge fail or pass in tests
+            Assert.That(expectedCode.Text, Is.EqualTo(code));
+
+        }
+
+
+        internal void CreateTMWithValues(IWebDriver driver, string code, string desc)
+        {
+            try
+            {
+                // Click Create New
+                Wait.WaitForElementClickable(driver, "XPath", "//*[@id='container']/p/a");
+                IWebElement CreateNew = driver.FindElement(By.XPath("//*[@id='container']/p/a"));
+                CreateNew.Click();
+
+                // Click Time in dropdown menu
+                Wait.WaitForElement(driver, "XPath", "//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]");
+                IWebElement TypeCode = driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[1]/div/span[1]/span/span[1]"));
+                TypeCode.Click();
+                IWebElement Time = driver.FindElement(By.XPath("//*[@id='TypeCode_listbox']/li[2]"));
+                Time.Click();
+
+                // Write valid value in Code
+                driver.FindElement(By.Id("Code")).SendKeys(code);
+
+                // Write valid value in Description
+                driver.FindElement(By.Id("Description")).SendKeys(desc);
+
+                //(*) Write valid value in Price per unit 
+                driver.FindElement(By.XPath("//*[@id='TimeMaterialEditForm']/div/div[4]/div/span[1]/span/input[1]")).SendKeys("100");
+
+                // Click Save 
+                IWebElement Save = driver.FindElement(By.Id("SaveButton"));
+                Save.Click();       
+
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Fail to create time & material", ex.Message);
+            }
+
+        }
+
+
+
+
+
         //***Test Edit Time Record***
 
         public void EditTM(IWebDriver driver)
@@ -95,6 +162,63 @@ namespace September2020.Pages
                 Assert.Fail("Fail to edit time & material", ex.Message);
             }
 
+        }
+
+
+
+        internal void NavigateToEdit(IWebDriver driver)
+        {
+            try
+            {
+                // Choose one item to click edit
+                Wait.WaitForElementClickable(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]");
+                IWebElement Edit1 = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[1]"));
+                Edit1.Click();
+
+            }catch (Exception ex)
+            {
+                Assert.Fail("Fail to click Edit into Edit page", ex.Message);
+            }
+
+        }
+
+
+        internal void EditTmWithCodeAndDesc(IWebDriver driver, string code, string desc)
+        {
+            try
+            {
+                // Modify the info
+                Wait.WaitForElementVisibility(driver, "Id", "Code", 5);
+                driver.FindElement(By.Id("Code")).Clear();
+                driver.FindElement(By.Id("Code")).SendKeys(code);
+                driver.FindElement(By.Id("Description")).Clear();
+                driver.FindElement(By.Id("Description")).SendKeys(desc);
+
+                // Click Save
+                driver.FindElement(By.Id("SaveButton")).Click();
+
+            }catch(Exception ex)
+            {
+                Assert.Fail("Fail to input the new data to edit", ex.Message);
+            }
+        }
+
+
+        internal void VerifyRecordEdited(IWebDriver driver, string code)
+        {
+            try
+            {
+                // Validate if the value is edited
+                Wait.WaitForElementVisibility(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]", 8);
+                IWebElement UpdatedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]"));
+
+                // Use assert syntax to judge fail or pass in tests
+                Assert.That(UpdatedCode.Text, Is.EqualTo(code));
+
+            }catch (Exception ex)
+            {
+                Assert.Fail("Fail to varify company is edited", ex.Message);
+            }
         }
 
 

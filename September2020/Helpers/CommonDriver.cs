@@ -26,7 +26,7 @@ namespace September2020.Helpers
         public void TestClosure()
         {
             //close instance of open chrome driver
-            driver.Quit();
+            driver.Dispose();
 
         }
 

@@ -120,7 +120,6 @@ E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\Septembe
 E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\September2020.runtimeconfig.dev.json
 E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\September2020.dll
 E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\September2020.pdb
-E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.csprojAssemblyReference.cache
 E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.AssemblyInfoInputs.cache
 E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.AssemblyInfo.cs
 E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.dll
@@ -256,3 +255,4 @@ E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\zh-Hant\
 E:\GitHub\Sept-2020-TurnUp-System\September2020\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.csproj.CoreCompileInputs.cache
 E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.csproj.CopyComplete
+E:\GitHub\Sept-2020-TurnUp-System\September2020\obj\Debug\netcoreapp3.1\September2020.csprojAssemblyReference.cache

@@ -38,5 +38,91 @@ namespace September2020.StepDefinitions
         }
 
 
+
+        [Given(@"I navigate to create new function")]
+        public void GivenINavigateToCreateNewFunction()
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.CreateTM(driver);
+        }
+
+
+
+        [When(@"I input data using code: (.*) and description: (.*)")]
+        public void WhenIInputDataUsingCodeAndDesc(string code, string desc)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.CreateTMWithValues(driver, code, desc);
+
+        }
+
+
+        [Then(@"I am able to verify data with code: (.*)")]
+        public void ThenIAmAbleToVerifyDataWithCode(string code)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.VarifyRecordCreated(driver, code);
+        
+        }
+
+
+
+        [When(@"I input data using values from table:")]
+        public void WhenIInputDataUsingValuesFromTable(Table table)
+        {
+            var code = string.Empty;
+            var desc = string.Empty;
+            var data = table;
+            TMPage tmPage = new TMPage();
+
+            for (var i = 0; i < data.Rows.Count; i++)
+            {
+                code = data.Rows[i]["code"];
+                desc = data.Rows[i]["desc"];
+                tmPage.CreateTMWithValues(driver, code, desc);
+                tmPage.VarifyRecordCreated(driver, code);
+            }
+
+            //data.Rows[0].items[0];    // code
+            //data.Rows[0].items[1];    // desc
+
+        }
+
+
+
+
+// ******* EDIT COMPANY*******
+        [Given(@"I navigate to edit")]
+        public void GivenINavigateToEdit()
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.NavigateToEdit(driver);
+
+        }
+
+
+        [When(@"I input new data with code: (.*) and desc:(.*)")]
+        public void WhenIInputNewDataWithCodeAndDesc(string code, string desc)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.EditTmWithCodeAndDesc(driver, code, desc);
+        }
+
+
+    
+        [Then(@"I am able to verify the edited record with code: (.*)")]
+        public void ThenIAmAbleToVerifyTheEditedRecordWithCode(string code)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.VerifyRecordEdited(driver, code);
+        }
+
+
+
+
+
+
+
     }
+
 }

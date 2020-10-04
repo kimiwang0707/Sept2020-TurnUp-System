@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace September2020.Pages
 {
-    class LoginPage
+    public class LoginPage
     {
         public void LoginSteps(IWebDriver driver)
         {

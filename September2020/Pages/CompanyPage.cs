@@ -76,6 +76,78 @@ namespace September2020.Pages
 
 
 
+        internal void VarifyByCompanyName(IWebDriver driver, string companyName)
+        {
+            try { 
+
+            // Go to last page
+            Wait.WaitForElement(driver, "XPath", "//*[@id='companiesGrid']/div[4]/a[4]/span");
+            driver.FindElement(By.XPath("//*[@id='companiesGrid']/div[4]/a[4]/span")).Click();
+
+            // validate if the company record is added to the list
+            Wait.WaitForElementVisibility(driver, "XPath", "//*[@id='companiesGrid']/div[3]/table/tbody/tr[last()]/td[1]", 5);
+            IWebElement lastItem = driver.FindElement(By.XPath("//*[@id='companiesGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+
+            //Use Assert syntax to judge fail or pass
+            Assert.That(lastItem.Text, Is.EqualTo(companyName));
+        }
+            catch (Exception ex)
+            {
+                Assert.Fail("Fail to create company", ex.Message);
+            }
+
+        }
+
+
+
+
+        internal void CreateCompanyWithName(IWebDriver driver, string companyName, string firstName, string lastName, int phone, int mobile, string email)
+        {
+            try
+            {
+                //Click Create New
+                Wait.WaitForElement(driver, "XPath", "//*[@id='container']/p/a");
+                driver.FindElement(By.XPath("//*[@id='container']/p/a")).Click();
+
+                //Input name
+                Wait.WaitForElement(driver, "Id", "Name");
+                IWebElement Name = driver.FindElement(By.Id("Name"));
+                Name.SendKeys(companyName);
+
+                // Click Edit to input contact
+                driver.FindElement(By.Id("EditContactButton")).Click();
+                Thread.Sleep(500);
+
+                // Switch to popup window
+                IWebElement iframe = driver.FindElement(By.ClassName("k-content-frame"));
+                driver.SwitchTo().Frame(iframe);
+
+                // Input data
+                Wait.WaitForElement(driver, "Id", "FirstName");
+                driver.FindElement(By.Id("FirstName")).SendKeys(firstName);
+                driver.FindElement(By.Id("LastName")).SendKeys(lastName);
+                driver.FindElement(By.Id("Phone")).SendKeys(phone.ToString());
+                driver.FindElement(By.Id("Mobile")).SendKeys(mobile.ToString());
+                driver.FindElement(By.Id("email")).SendKeys(email);
+
+                // Click Save Contact to create new record
+                driver.FindElement(By.Id("submitButton")).Click();
+
+                // Return default main window
+                driver.SwitchTo().DefaultContent();
+
+                // Save button
+                Wait.WaitForElement(driver, "Id", "SaveButton");
+                driver.FindElement(By.Id("SaveButton")).Click();
+            }
+            catch (Exception exc)
+            { Assert.Fail("Fail to create new company", exc.Message); }
+
+        }
+
+
+
+
         // *** Edit company record ***
         public void EditCompany(IWebDriver driver)
         {
