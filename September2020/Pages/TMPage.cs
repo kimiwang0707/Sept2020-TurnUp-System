@@ -87,6 +87,7 @@ namespace September2020.Pages
 
         }
 
+ 
 
         internal void CreateTMWithValues(IWebDriver driver, string code, string desc)
         {
@@ -124,6 +125,7 @@ namespace September2020.Pages
             }
 
         }
+
 
 
 
@@ -272,6 +274,99 @@ namespace September2020.Pages
                 Assert.Fail("Fail to delete Time & Material", ex.Message);
             }
         }
+
+
+
+        internal void NavigateToDelete(IWebDriver driver)
+        {
+            try
+            {
+                // Click one item to Delete
+                Wait.WaitForElementVisibility(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]", 5);
+                string CodeDelete = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]")).Text;
+                string CodeDeleteNextRow = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[2]/td[1]")).Text;
+                driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[2]")).Click();
+
+            }catch (Exception ex)
+            {
+                Assert.Fail("Fail to click Delete", ex.Message);
+            }
+
+        }
+
+
+        internal void CancelToDelete(IWebDriver driver)
+        {
+            try
+            {
+                // * Click Cancel to cancel Delete *
+                Thread.Sleep(500);
+                driver.SwitchTo().Alert().Dismiss();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Fail to jump to pop up page to cancel", ex.Message);
+            }
+        }
+
+        internal void VerifyCompanyNotDeleted(IWebDriver driver, string CodeDelete)
+        {
+            try
+            {
+                // Validate if the record has been deleted
+                Wait.WaitForElement(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]");
+                IWebElement ExpectedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]"));
+
+                // Use assert syntax to judge fail or pass in tests
+                Assert.That(ExpectedCode.Text, Is.EqualTo(CodeDelete));
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Fail to verify company not deleted", ex.Message);
+            }
+        }
+
+
+        internal void ConfirmToDelete(IWebDriver driver)
+        {
+            try
+            {
+                Wait.WaitForElement(driver, "XPath", "//*[@id='tmsGrid']/div[3]/table/tbody/tr[2]/td[1]");
+
+                // Click Delete to delete the 1st record
+                driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[5]/a[2]")).Click();
+                Thread.Sleep(500);
+                driver.SwitchTo().Alert().Accept();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Fail to jump to pop up page to confirm", ex.Message);
+            }
+        }
+
+
+
+        internal void VerifyCompanyIsDeleted(IWebDriver driver, string CodeDeleteNextRow)
+        {
+            try
+            {
+                // Validate if ther record has been deleted
+                Thread.Sleep(1500);
+                IWebElement ExpectedFirstRowCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[1]/td[1]"));
+
+                // Use assert syntax to judge fail or pass in tests
+                Assert.That(ExpectedFirstRowCode.Text, Is.EqualTo(CodeDeleteNextRow));
+            } catch (Exception ex)
+            {
+                Assert.Fail("Fail to verify company deleted", ex.Message);
+            }
+        }
+
+
+
+
+
+
 
     }
 }

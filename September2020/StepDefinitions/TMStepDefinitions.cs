@@ -4,6 +4,7 @@ using September2020.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using TechTalk.SpecFlow;
 
@@ -117,6 +118,51 @@ namespace September2020.StepDefinitions
             tmPage.VerifyRecordEdited(driver, code);
         }
 
+
+
+
+
+ // ******* DELETE COMPANY*******
+
+        [Given(@"I navigate to delete TM")]
+        public void GivenINavigateToDeleteTM()
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.NavigateToDelete(driver);
+        }
+
+        [When(@"I cancel to delete TM")]
+        public void WhenICancelToDeleteTM()
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.CancelToDelete(driver);
+        }
+
+
+
+        [Then(@"I am able to verify the data is not deleted")]
+        public void ThenIAmAbleToVerifyTheDataIsNotDeleted(string CodeDelete)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.VerifyCompanyNotDeleted(driver, CodeDelete);
+        }
+
+
+
+        [When(@"I confirm to delete TM")]
+        public void WhenIConfirmToDeleteTM()
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.ConfirmToDelete(driver);
+        }
+
+
+        [Then(@"I am able to verify the data is deleted")]
+        public void ThenIAmAbleToVerifyTheDataIsDeleted(string CodeDeleteNextRow)
+        {
+            TMPage tmPage = new TMPage();
+            tmPage.VerifyCompanyIsDeleted(driver, CodeDeleteNextRow);
+        }
 
 
 
