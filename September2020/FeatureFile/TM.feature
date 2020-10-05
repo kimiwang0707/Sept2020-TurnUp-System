@@ -2,13 +2,10 @@
          Create TM, Edit TM and Delete TM
 
 Background: Navigate to the TM
+    Given I navigate to login turnup
     Given I navigate to the TM
 
-
-Scenario: Verify the TM is created.
-Given I navigate to create new function
-
-
+#Verify TM Create (ordinary input)
 Scenario Outline: Verify multiple TM creation
 When I input data using code: <code> and description: <desc>
 Then I am able to verify data with code: <code>
@@ -18,7 +15,7 @@ Examples:
 |         Alice        |           Alice is lost!                       |
 
 
-#Verify TM Create
+#Verify TM Create (Data table)
 #Use Data table to avoid frequent login and out for each record
 Scenario: Verify usage of Data Tables
 When I input data using values from table:

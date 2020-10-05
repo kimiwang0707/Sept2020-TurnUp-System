@@ -78,6 +78,9 @@ namespace September2020.FeatureFile
 #line 4
 #line hidden
 #line 5
+    testRunner.Given("I navigate to log in turnup", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 6
     testRunner.Given("I navigate to company page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
@@ -89,7 +92,7 @@ namespace September2020.FeatureFile
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify company is created", null, tagsOfScenario, argumentsOfScenario);
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -112,7 +115,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 8
+#line 9
 testRunner.Given("I navigate to create company", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             }
@@ -134,7 +137,7 @@ testRunner.Given("I navigate to create company", ((string)(null)), ((TechTalk.Sp
             argumentsOfScenario.Add("Mobile", mobile);
             argumentsOfScenario.Add("Email", email);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify multiple company creation", null, tagsOfScenario, argumentsOfScenario);
-#line 10
+#line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -157,10 +160,10 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 11
+#line 12
 testRunner.When(string.Format("I input data using Company Name: {0} and Contact: {1} {2} {3} {4} {5}", companyName, firstName, lastName, phone, mobile, email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 12
+#line 13
 testRunner.Then(string.Format("I am able to verify data with Company Name: {0}", companyName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -174,7 +177,7 @@ testRunner.Then(string.Format("I am able to verify data with Company Name: {0}",
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify usage of company data table to create", null, tagsOfScenario, argumentsOfScenario);
-#line 21
+#line 22
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -232,7 +235,7 @@ this.FeatureBackground();
                             "8725323",
                             "43545344",
                             "cooler@hotmail.com"});
-#line 22
+#line 23
 testRunner.When("I create company record using data table:", ((string)(null)), table1, "When ");
 #line hidden
             }

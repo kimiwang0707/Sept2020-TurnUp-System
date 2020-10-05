@@ -10,25 +10,34 @@ using TechTalk.SpecFlow;
 
 namespace September2020.StepDefinitions
 {
-    [Binding]
+    //[Binding]
+    [Binding, Scope(Feature = "Company")]
     public sealed class CompanyStepDefinitions
     {
         IWebDriver driver;
 
-        [BeforeScenario]
-        public void LoginTurnUp()
-        {
-            //Initiate and define webdriver
-            driver = new ChromeDriver();
-            LoginPage loginObj = new LoginPage();
-            loginObj.LoginSteps(driver);
-        }
+        //[BeforeScenario]
+        //public void LoginTurnUp()
+        //{
+        //    //Initiate and define webdriver
+        //    driver = new ChromeDriver();
+        //    LoginPage loginObj = new LoginPage();
+        //    loginObj.LoginSteps(driver);
+        //}
 
 
         [AfterScenario]
         public void Dispose()
         {
             driver.Dispose();
+        }
+
+        [Given(@"I navigate to log in turnup")]
+        public void GivenINavigateToLogInTurnup()
+        {
+            driver = new ChromeDriver();
+            LoginPage loginObj = new LoginPage();
+            loginObj.LoginSteps(driver);
         }
 
 

@@ -2,6 +2,7 @@
 	Create, edit and delete company item
 
 Background: Navigate to Company page
+    Given I navigate to log in turnup
     Given I navigate to company page
 
 Scenario: Verify company is created

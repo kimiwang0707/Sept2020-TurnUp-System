@@ -346,8 +346,9 @@ namespace September2020.Pages
 
 
 
-        internal void VerifyCompanyIsDeleted(IWebDriver driver, string CodeDeleteNextRow)
+        internal void VerifyCompanyIsDeleted(IWebDriver driver)
         {
+            var CodeDeleteNextRow = 1;
             try
             {
                 // Validate if ther record has been deleted

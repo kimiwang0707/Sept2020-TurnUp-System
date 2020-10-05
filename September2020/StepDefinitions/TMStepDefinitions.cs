@@ -3,26 +3,36 @@ using OpenQA.Selenium.Chrome;
 using September2020.Pages;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using TechTalk.SpecFlow;
 
 namespace September2020.StepDefinitions
 {
-    [Binding]
+    [Binding, Scope(Feature = "TM")]
+    //[Binding]
     public sealed class TMStepDefinitions
     {
         IWebDriver driver;
 
-        [BeforeScenario]
-        public void LoginTurnUp()
-        {
-            //Initiate and define webdriver
-            driver = new ChromeDriver();
-            LoginPage loginObj = new LoginPage();
-            loginObj.LoginSteps(driver);
-        }
+        //[BeforeScenario]
+        //public void LoginTurnUp()
+        //{
+        //    //Initiate and define webdriver
+
+        //    var chromeOptions = new ChromeOptions();
+        //    chromeOptions.AddArguments("headless");
+
+        //    driver = new ChromeDriver(chromeOptions);
+
+        //    LoginPage loginObj = new LoginPage();
+        //    loginObj.LoginSteps(driver);
+
+        //}
+
 
         [AfterScenario]
         public void Dispose()
@@ -31,20 +41,29 @@ namespace September2020.StepDefinitions
         }
 
 
+        [Given(@"I navigate to login turnup")]
+        public void GivenINavigateToLoginTurnup()
+        {
+            //var chromeOptions = new ChromeOptions();
+            //chromeOptions.AddArguments("headless");
+
+            //driver = new ChromeDriver(chromeOptions);
+
+            //LoginPage loginObj = new LoginPage();
+            //loginObj.LoginSteps(driver);
+
+            driver = new ChromeDriver();
+            LoginPage loginObj = new LoginPage();
+            loginObj.LoginSteps(driver);
+
+        }
+
+
         [Given(@"I navigate to the TM")]
         public void GivenINavigateToTheTM()
         {
             var homePage = new HomePage();
             homePage.NavigateToTM(driver);
-        }
-
-
-
-        [Given(@"I navigate to create new function")]
-        public void GivenINavigateToCreateNewFunction()
-        {
-            TMPage tmPage = new TMPage();
-            tmPage.CreateTM(driver);
         }
 
 
@@ -92,7 +111,7 @@ namespace September2020.StepDefinitions
 
 
 
-// ******* EDIT COMPANY*******
+// ******* EDIT TM*******
         [Given(@"I navigate to edit")]
         public void GivenINavigateToEdit()
         {
@@ -122,7 +141,7 @@ namespace September2020.StepDefinitions
 
 
 
- // ******* DELETE COMPANY*******
+ // ******* DELETE TM*******
 
         [Given(@"I navigate to delete TM")]
         public void GivenINavigateToDeleteTM()
@@ -158,10 +177,10 @@ namespace September2020.StepDefinitions
 
 
         [Then(@"I am able to verify the data is deleted")]
-        public void ThenIAmAbleToVerifyTheDataIsDeleted(string CodeDeleteNextRow)
+        public void ThenIAmAbleToVerifyTheDataIsDeleted()
         {
             TMPage tmPage = new TMPage();
-            tmPage.VerifyCompanyIsDeleted(driver, CodeDeleteNextRow);
+            tmPage.VerifyCompanyIsDeleted(driver);
         }
 
 
